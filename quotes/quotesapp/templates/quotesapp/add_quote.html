@@ -1,0 +1,24 @@
+{% extends 'quotesapp/base.html' %}
+
+{% block content %}
+<form action="{% url 'quotesapp:add_quote' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="InputQuote" class="form-label">Quote</label>
+        {{ form.quote }}
+        <span>{{form.errors.quote}}</span>
+    </div>
+    <div class="mb-3">
+        <label for="InputAuthor" class="form-label">Author</label>
+        {{ form.author }}
+        <span>{{form.errors.author}}</span>
+    </div>
+    <div class="mb-3">
+        <label for="InputTags" class="form-label">Tags</label>
+        {{ form.tags }}
+        <span>{{form.errors.tags}}</span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+</form>
+{% endblock %}
